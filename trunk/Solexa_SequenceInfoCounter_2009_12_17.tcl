@@ -81,13 +81,20 @@ proc Sort_Table {argv} {
     set n 0
     while { $n < $q_len } {
 
-	set a_fract [expr int(round($q_array_a($n)*100.00/$q_array_all($n)))]
-	set t_fract [expr int(round($q_array_t($n)*100.00/$q_array_all($n)))]
-	set g_fract [expr int(round($q_array_g($n)*100.00/$q_array_all($n)))]
-	set c_fract [expr int(round($q_array_c($n)*100.00/$q_array_all($n)))]
-	set n_fract [expr int(round($q_array_n($n)*100.00/$q_array_all($n)))]
-	set x_fract [expr int(round($q_array_x($n)*100.00/$q_array_all($n)))]
-	set z_fract [expr int(round($q_array_z($n)*100.00/$q_array_all($n)))]
+	set a_fract [expr int(round($q_array_a($n)*1000.00/$q_array_all($n)))]
+	set a_fract [expr $a_fract/10.0]
+	set t_fract [expr int(round($q_array_t($n)*1000.00/$q_array_all($n)))]
+	set t_fract [expr $t_fract/10.0]
+	set g_fract [expr int(round($q_array_g($n)*1000.00/$q_array_all($n)))]
+	set g_fract [expr $g_fract/10.0]
+	set c_fract [expr int(round($q_array_c($n)*1000.00/$q_array_all($n)))]
+	set c_fract [expr $c_fract/10.0]
+	set n_fract [expr int(round($q_array_n($n)*1000.00/$q_array_all($n)))]
+	set n_fract [expr $n_fract/10.0]
+	set x_fract [expr int(round($q_array_x($n)*1000.00/$q_array_all($n)))]
+	set x_fract [expr $x_fract/10.0]
+	set z_fract [expr int(round($q_array_z($n)*1000.00/$q_array_all($n)))]
+	set z_fract [expr $z_fract/10.0]
 
 	set q_sum [expr $q_array_a($n) + $q_array_t($n) + $q_array_g($n) + $q_array_c($n) + $q_array_n($n) + $q_array_x($n) + $q_array_z($n)]
 
@@ -97,13 +104,18 @@ proc Sort_Table {argv} {
 	set at_sum [expr $q_array_a($n) + $q_array_t($n)]
 	set gc_sum [expr $q_array_g($n) + $q_array_c($n)]
 
-	set all_fract [expr int(round($q_sum*100.00/$q_array_all($n)))]
+	set all_fract [expr int(round($q_sum*1000.00/$q_array_all($n)))]
+	set all_fract [expr $all_fract/10.0]
 
-	set at_fract [expr int(round($at_sum*100.00/$q_array_all($n)))]
-	set gc_fract [expr int(round($gc_sum*100.00/$q_array_all($n)))]
+	set at_fract [expr int(round($at_sum*1000.00/$q_array_all($n)))]
+	set at_fract [expr $at_fract/10.0]
+	set gc_fract [expr int(round($gc_sum*1000.00/$q_array_all($n)))]
+	set gc_fract [expr $gc_fract/10.0]
 
-	set atgc_fract [expr int(round($atgc_sum*100.00/$q_array_all($n)))]
-	set nxz_fract [expr int(round($nxz_sum*100.00/$q_array_all($n)))]
+	set atgc_fract [expr int(round($atgc_sum*1000.00/$q_array_all($n)))]
+	set atgc_fract [expr $atgc_fract/10.0]
+	set nxz_fract [expr int(round($nxz_sum*1000.00/$q_array_all($n)))]
+	set nxz_fract [expr $nxz_fract/10.0]
 
 	puts $f_out "$n\t$q_array_a($n)\t$q_array_t($n)\t$q_array_g($n)\t$q_array_c($n)\t$q_array_n($n)\t$q_array_x($n)\t$q_array_z($n)\t$q_array_all($n)\t\*\*\*\t$q_sum\t\*\*\*\t$a_fract\t$t_fract\t$g_fract\t$c_fract\t$atgc_fract\t$at_fract\t$gc_fract\t$nxz_fract\t$all_fract"
 	puts "$n\t$q_array_a($n)\t$q_array_t($n)\t$q_array_g($n)\t$q_array_c($n)\t$q_array_n($n)\t$q_array_x($n)\t$q_array_z($n)\t$q_array_all($n)\t\*\*\*\t$q_sum\t\*\*\*\t$a_fract\t$t_fract\t$g_fract\t$c_fract\t$atgc_fract\t$at_fract\t$gc_fract\t$nxz_fract\t$all_fract"
